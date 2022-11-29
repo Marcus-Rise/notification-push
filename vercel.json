@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "notifications",
   "builds": [
     { "src": "app.js", "use": "@vercel/node" }
   ],
