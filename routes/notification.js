@@ -37,7 +37,17 @@ router.post(`/sendNotification`, (req, res) => {
             })
             .catch((error) => {
                 console.log(error);
-                res.sendStatus(500);
+
+                res.status(500);
+                res.setHeader('Content-Type', 'application/json');
+                res.send(JSON.stringify({
+                    error: {
+                        id: 'unable-to-send-messages',
+                        message: `We were unable to send messages to all subscriptions : ` +
+                            `'${error.message}'`
+                    }
+                }));
+
             });
     }, req.body.delay * 1000);
 });
